@@ -1,0 +1,54 @@
+
+GET http://localhost:3000 
+Content-Type: application/json
+
+###
+
+POST http://localhost:3000/cidades
+Content-Type: application/json
+
+{ 
+    "nome": "Nome",
+    "estado": "Estado"
+}
+
+###
+
+POST http://localhost:3000/cidades
+Content-Type: application/json
+
+{ 
+}
+
+###
+
+POST http://localhost:3000/cidades
+Content-Type: application/json
+
+{ 
+    "nome": "Noa"
+}
+
+### 
+GET http://localhost:3000/cidades
+
+### 
+GET http://localhost:3000/cidades?limit=0
+
+### 
+GET http://localhost:3000/cidades/1
+
+
+### 
+PUT http://localhost:3000/cidades/1 
+Content-Type: application/json 
+
+{ 
+    "nome": "nome"
+}
+
+
+### 
+DELETE http://localhost:3000/cidades/1 
+Content-Type: application/json 
+
