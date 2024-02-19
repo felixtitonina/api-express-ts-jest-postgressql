@@ -9,21 +9,22 @@ export const getAll = async (
   id = 0,
 ): Promise<ICidade[] | Error> => {
   try {
+    if (id > 0 /** && result.every((item) => item.id !== id) */) {
+      const resultById = await Knex(ETableNames.cidade)
+        .select('*')
+        .where('id', '=', id)
+        .first();
+
+      if (!resultById) return [];
+      return [resultById];
+    }
+
     const result = await Knex(ETableNames.cidade)
       .select('*')
       .where('id', Number(id))
       .orWhere('nome', 'like', `%${filter}%`)
       .offset((page - 1) * limit) // (1 * 10)
       .limit(limit);
-
-    if (id > 0 && result.every((item) => item.id !== id)) {
-      const resultById = await Knex(ETableNames.cidade)
-        .select('*')
-        .where('id', '=', id)
-        .first();
-
-      if (resultById) return [...result, resultById];
-    }
     return result;
   } catch (error) {
     console.log('🚀 ~ error:', error);

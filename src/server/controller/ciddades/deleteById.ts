@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import { cidadesProvider } from '../../database/providers/cidades';
 
 interface IParamProps {
-  id?: number;
+  id: number;
 }
 
 export const deleteByIdValidation = validation((getSchema) => ({
