@@ -3,16 +3,10 @@ import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../jest.setup';
 
 describe('pessoas - DeleteById', () => {
-  let cidadeId: number | undefined = undefined;
-
-  beforeAll(async () => {
-    const resCidade = await testServer.post('/cidades').send({ nome: 'teste' });
-    cidadeId = resCidade.body;
-  });
   it('Apaga registro', async () => {
     const res1 = await testServer.post('/pessoas').send({
       email: 'felixdeletebyid@gmail.com',
-      cidadeId,
+      cidadeId: 1,
       nomeCompleto: 'felix tito nina',
     });
 
