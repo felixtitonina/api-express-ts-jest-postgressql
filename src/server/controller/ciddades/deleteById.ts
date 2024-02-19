@@ -21,7 +21,7 @@ export const deleteById = async (req: Request<IParamProps>, res: Response) => {
   console.log('🚀 ~ deleteById ~ result:', result);
   if (result instanceof Error) {
     return res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .status(StatusCodes.BAD_REQUEST)
       .json({ errors: { default: result.message } });
   }
   return res.status(StatusCodes.NO_CONTENT).json(result);

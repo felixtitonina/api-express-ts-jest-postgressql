@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { cidadesConrtoller } from './../controller';
+import { cidadesConrtoller, pessoasConrtoller } from './../controller';
 
 const router = Router();
 
@@ -39,4 +39,35 @@ router.delete(
   cidadesConrtoller.deleteByIdValidation,
   cidadesConrtoller.deleteById,
 );
+
+router.get(
+  '/pessoas',
+  pessoasConrtoller.getAllQueryValidation,
+  pessoasConrtoller.getAll,
+);
+
+router.get(
+  '/pessoas/:id',
+  pessoasConrtoller.getByIdValidation,
+  pessoasConrtoller.getById,
+);
+
+router.put(
+  '/pessoas/:id',
+  pessoasConrtoller.updateByIdValidation,
+  pessoasConrtoller.updateById,
+);
+
+router.post(
+  '/pessoas',
+  pessoasConrtoller.createBodyValidation,
+  pessoasConrtoller.create,
+);
+
+router.delete(
+  '/pessoas/:id',
+  pessoasConrtoller.deleteByIdValidation,
+  pessoasConrtoller.deleteById,
+);
+
 export { router };
