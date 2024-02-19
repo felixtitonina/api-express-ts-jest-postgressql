@@ -1,6 +1,10 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { cidadesConrtoller, pessoasConrtoller } from './../controller';
+import {
+  cidadesConrtoller,
+  pessoasConrtoller,
+  usuariosConrtoller,
+} from './../controller';
 
 const router = Router();
 
@@ -68,6 +72,18 @@ router.delete(
   '/pessoas/:id',
   pessoasConrtoller.deleteByIdValidation,
   pessoasConrtoller.deleteById,
+);
+
+router.post(
+  '/entrar',
+  usuariosConrtoller.signInBodyValidation,
+  usuariosConrtoller.signIn,
+);
+
+router.post(
+  '/cadastrar',
+  usuariosConrtoller.signUpBodyValidation,
+  usuariosConrtoller.signUp,
 );
 
 export { router };
