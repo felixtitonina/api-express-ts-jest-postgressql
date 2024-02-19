@@ -30,8 +30,6 @@ export const updateById = async (
   req: Request<IParamProps, {}, IBodyProps>,
   res: Response,
 ) => {
-  console.log(req.params);
-  console.log(req.body);
   const result = await pessoasProvider.updateById(
     Number(req.params.id),
     req.body,

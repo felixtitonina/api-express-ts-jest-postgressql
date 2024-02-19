@@ -15,7 +15,6 @@ export const seed = async (knex: Knex) => {
   const cidadesToInsert = cidades.map((nomeDaCidade) => ({
     nome: nomeDaCidade,
   }));
-  console.log('🚀 ~ cidadesToInsert ~ cidadesToInsert:', cidadesToInsert);
 
   // Inserts seed entries
   await knex(ETableNames.cidade).insert(cidadesToInsert);
