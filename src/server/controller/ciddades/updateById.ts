@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
 import { ICidade } from '../../database/models';
+import { cidadesProvider } from '../../database/providers/cidades';
 
 interface IParamProps {
   id?: number;
@@ -27,13 +28,16 @@ export const updateById = async (
   req: Request<IParamProps, {}, IBodyProps>,
   res: Response,
 ) => {
-  try {
-    console.log(req.params);
-    console.log(req.body);
+  console.log(req.params);
+  console.log(req.body);
+  const result = await cidadesProvider.updateById(
+    Number(req.params.id),
+    req.body,
+  );
+  if (result instanceof Error) {
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .send('not implemented');
-  } catch (error) {
-    console.log('🚀 ~ updateById ~ error:', error);
+      .json({ errors: { default: result.message } });
   }
+  return res.status(StatusCodes.NO_CONTENT).json(result);
 };
