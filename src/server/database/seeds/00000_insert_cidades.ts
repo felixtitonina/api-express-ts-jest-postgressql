@@ -1,6 +1,8 @@
 import { Knex } from 'knex';
 import { ETableNames } from '../EtableNames';
-import { cidades } from '../../shared/util/cidades';
+import { cidadesSeed } from '../../shared/util/cidadesSeed';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const seed = async (knex: Knex) => {
   // Deletes ALL existing entries
@@ -12,8 +14,10 @@ export const seed = async (knex: Knex) => {
 
   if (!Number.isInteger(count) || Number(count) > 0) return;
 
-  const cidadesToInsert = cidades.map((nomeDaCidade) => ({
-    nome: nomeDaCidade,
+  const cidadesToInsert = cidadesSeed.map((nomeDaCidade) => ({
+    nome:
+      `${process.env.NODE_ENV !== 'production' ? process.env.NODE_ENV + '_' : ''} ` +
+      nomeDaCidade,
   }));
 
   // Inserts seed entries

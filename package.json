@@ -10,9 +10,10 @@
     "rollback-all": "knex --knexfile src/server/database/knex/environment.ts migrate:rollback --all",
     "seedrun": "knex --knexfile src/server/database/knex/environment.ts seed:run",
     "seed": "knex --knexfile src/server/database/knex/environment.ts seed:make",
-    "dev": "ts-node-dev ./src/index.ts",
-    "prod": "node ./dist/index.js",
-    "build": "npx tsc",
+    "dev": "cp .env.development .env && ts-node-dev ./src/index.ts",
+    "homolog": "cp .env.homolog .env && ts-node-dev ./src/index.ts",
+    "production": "cp .env.production .env && node ./dist/index.js",
+    "build": "cp .env.production .env && npx tsc",
     "postinstall": "npx tsc",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest"

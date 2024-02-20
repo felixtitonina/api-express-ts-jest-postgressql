@@ -9,7 +9,11 @@ const startServer = () => {
   server.listen(port, () => console.log(`listening on port ${port}`));
 };
 
-if (process.env.IS_LOCALHOST !== 'true') {
+if (
+  // process.env.NODE_ENV == 'development' ||
+  process.env.NODE_ENV == 'homolog' ||
+  process.env.NODE_ENV == 'production'
+) {
   Knex.migrate
     .latest()
     .then(() => {

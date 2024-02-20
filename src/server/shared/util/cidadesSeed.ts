@@ -1,4 +1,4 @@
-export const cidades = [
+export const cidadesSeed = [
   'Aceguá',
   'Água Santa',
   'Agudo',
