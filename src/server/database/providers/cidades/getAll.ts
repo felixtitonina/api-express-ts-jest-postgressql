@@ -21,13 +21,14 @@ export const getAll = async (
 
     const result = await Knex(ETableNames.cidade)
       .select('*')
-      .where('id', Number(id))
+      .where('id', '=', Number(id))
       .orWhere('nome', 'like', `%${filter}%`)
-      .offset((page - 1) * limit) // (1 * 10)
-      .limit(limit);
+      .offset((Number(page) - 1) * Number(limit)) // (1 * 10)
+      .limit(Number(limit));
+
     return result;
   } catch (error) {
-    console.log('🚀 ~ error:', error);
+    console.log('🚀 ~ catch error:', error);
     return new Error('Erro ao consultar os registros');
   }
 };
