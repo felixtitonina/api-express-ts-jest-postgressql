@@ -1,4 +1,4 @@
-# RESTful com Node.js, Express e PostgreSQL
+# RESTful com Node.js, Express, PostgreSQL e Swagger
 
 
 ### Pré-requisitos
@@ -16,5 +16,5 @@
 
 ### Documentação
 
-Utilize o Postman para testar suas chamadas. [docs](http://localhost:3333/docs).
+Utilize o Postman para testar suas chamadas ou [docs swagger](http://localhost:3333/docs).
 
