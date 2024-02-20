@@ -4,6 +4,7 @@ import { validation } from '../../shared/middleware';
 import { StatusCodes } from 'http-status-codes';
 import { IUsuario } from '../../database/models';
 import { usuariosProvider } from '../../database/providers/usuarios';
+import { PassswordCryto } from '../../shared/services';
 
 interface IBodyProps extends Omit<IUsuario, 'id' | 'nome'> {}
 
@@ -29,7 +30,13 @@ export const signIn = async (
       .json({ errors: { default: 'Email ou senha inválidos.' } });
   }
 
-  if (senha !== result.senha) {
+  const passwordMatch = await PassswordCryto.verifyPassword(
+    senha,
+    result.senha,
+  );
+  console.log('🚀 ~ passwordMatch:', passwordMatch);
+
+  if (!passwordMatch) {
     return res
       .status(StatusCodes.UNAUTHORIZED)
       .json({ errors: { default: 'Email ou senha inválidos.' } });
