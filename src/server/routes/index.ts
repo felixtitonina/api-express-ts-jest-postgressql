@@ -9,9 +9,9 @@ import { ensureAuthenticated } from '../shared/middleware';
 
 const router = Router();
 
-router.get('/', (_, res) => {
+router.get('/health', (_, res) => {
   return res.status(StatusCodes.CREATED).send({
-    message: 'ola mundo',
+    message: 'Success',
   });
 });
 
