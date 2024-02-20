@@ -18,7 +18,6 @@ export const deleteByIdValidation = validation((getSchema) => ({
 
 export const deleteById = async (req: Request<IParamProps>, res: Response) => {
   const result = await pessoasProvider.deleteById(Number(req.params.id));
-  console.log('🚀 ~ deleteById ~ result:', result);
   if (result instanceof Error) {
     return res
       .status(StatusCodes.BAD_REQUEST)

@@ -14,7 +14,6 @@ const verify = (
   try {
     if (!process.env.JWT_SECRET) return 'JWT_SECRET_NOT_FOUND';
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('🚀 ~ decoded:', decoded);
     if (typeof decoded === 'string') {
       return 'INVALID_TOKEN';
     }
