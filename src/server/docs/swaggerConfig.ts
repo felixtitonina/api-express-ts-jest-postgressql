@@ -8,12 +8,12 @@ export const optionsDocs = {
     },
     components: {
       securitySchemes: {
-        MainAccessToken: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
-        },
-        AssignmentAccessToken: {
+        // MainAccessToken: {
+        //   type: 'http',
+        //   scheme: 'bearer',
+        //   bearerFormat: 'JWT',
+        // },
+        bearerAuth: {
           type: 'http',
           scheme: 'bearer',
           bearerFormat: 'JWT',
